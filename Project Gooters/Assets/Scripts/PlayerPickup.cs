@@ -5,17 +5,28 @@ public class PlayerPickup : MonoBehaviour
 {
     private const int MaxNumberOfElementsToCheck = 5;
 
-    public LayerMask pickupMask;
-    public Transform pickupPoint;
+    [Header("Pickup Detection")] public LayerMask pickupMask;
+    public Transform pickupDetectionPoint;
     public float pickupCheckRadius;
 
-    public PlayerPickupObserver pickupObserver;
+    [Header("Pickup")] public Transform pickupPoint;
+
     private Pickup _currentItem;
+
+    private void Start()
+    {
+        enabled = false;
+    }
+
+    private void Update()
+    {
+        _currentItem.UpdateTarget(pickupPoint.position);
+    }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(pickupPoint.position, pickupCheckRadius);
+        Gizmos.DrawWireSphere(pickupDetectionPoint.position, pickupCheckRadius);
     }
 
     public void OnPickup()
@@ -30,34 +41,40 @@ public class PlayerPickup : MonoBehaviour
 
             _currentItem = pickup;
             _currentItem.PickupItem();
+            enabled = true;
             return;
         }
 
         _currentItem.DropItem();
         _currentItem = null;
+        enabled = false;
     }
 
     private bool SearchForItem(out Pickup foundPickup)
     {
         foundPickup = null;
-        var relativePos = (Vector2) pickupPoint.position;
+        var relativePos = (Vector2) pickupDetectionPoint.position;
 
         var overlaps = new Collider2D[MaxNumberOfElementsToCheck];
-        Physics2D.OverlapCircleNonAlloc(relativePos, pickupCheckRadius, overlaps, pickupMask);
+        var foundAmount = Physics2D.OverlapCircleNonAlloc(relativePos, pickupCheckRadius, overlaps, pickupMask);
 
-        var pickups = overlaps.Select(overlap => GetComponent<Pickup>()).Where(pickup => pickup != null).ToList();
+        var pickups = overlaps
+            .Take(foundAmount)
+            .Select(overlap => overlap.GetComponent<Pickup>())
+            .Where(pickup => pickup != null)
+            .ToList();
 
         var currentDistance = 10000.0f;
-        foreach (var overlap in pickups)
+        foreach (var pickup in pickups)
         {
-            var distance = (relativePos - (Vector2) overlap.transform.position).sqrMagnitude;
+            var distance = (relativePos - (Vector2) pickup.transform.position).sqrMagnitude;
             if (!(currentDistance > distance))
             {
                 continue;
             }
 
             currentDistance = distance;
-            foundPickup = overlap;
+            foundPickup = pickup;
         }
 
         return foundPickup != null;

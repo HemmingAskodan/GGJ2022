@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7379676066517723919}
   - component: {fileID: 7379676066517724018}
   - component: {fileID: 2041880899}
+  - component: {fileID: 1985390003}
+  - component: {fileID: 1985390002}
   m_Layer: 8
   m_Name: Mouse
   m_TagString: Untagged
@@ -184,7 +186,44 @@ MonoBehaviour:
   groundCheckRadius: 0.12
   groundCheckMask:
     serializedVersion: 2
-    m_Bits: 576
+    m_Bits: 1600
+--- !u!257 &1985390003
+TargetJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7379676066517723917}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_Anchor: {x: 0, y: 0.15}
+  m_Target: {x: 0.62610865, y: 0.5702574}
+  m_AutoConfigureTarget: 1
+  m_MaxForce: 10000
+  m_DampingRatio: 1
+  m_Frequency: 5
+--- !u!114 &1985390002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7379676066517723917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 607fa18aaec684125a49f869f8bad330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPickedUp:
+    m_PersistentCalls:
+      m_Calls: []
+  onDropped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7379676067741688278
 GameObject:
   m_ObjectHideFlags: 0
