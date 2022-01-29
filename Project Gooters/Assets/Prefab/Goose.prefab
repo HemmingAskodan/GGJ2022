@@ -466,7 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  jumpForce: 5
+  jumpForce: 5.3
   groundOffset: {x: 0, y: -0.9}
   groundCheckRadius: 0.24
   groundCheckMask:
