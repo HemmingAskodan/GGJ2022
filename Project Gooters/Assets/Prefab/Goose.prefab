@@ -233,9 +233,11 @@ GameObject:
   - component: {fileID: 1396814258439485562}
   - component: {fileID: 1396814258439485563}
   - component: {fileID: 627247258}
+  - component: {fileID: 4213939753265247269}
+  - component: {fileID: 1015049113972208252}
   m_Layer: 7
   m_Name: Goose
-  m_TagString: Untagged
+  m_TagString: Goose
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -488,5 +490,35 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   pickupDetectionPoint: {fileID: 1276296953}
-  pickupCheckRadius: 0.75
+  pickupCheckRadius: 0
+  detection: {fileID: 1015049113972208252}
   pickupPoint: {fileID: 953343571}
+--- !u!114 &4213939753265247269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396814258439485504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8590d2451d5e2429da4c179ed497445f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1015049113972208252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396814258439485504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c54e902460a44545b318d9393651f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionMask:
+    serializedVersion: 2
+    m_Bits: 1280
+  detectionPoint: {fileID: 1276296953}
+  detectionRadius: 0.75

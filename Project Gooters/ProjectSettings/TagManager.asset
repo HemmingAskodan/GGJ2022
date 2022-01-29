@@ -19,7 +19,7 @@ TagManager:
   - Mouse Specific Platforms
   - Pickup
   - Camera Events
-  - 
+  - Interaction
   - 
   - 
   - 
@@ -63,4 +63,7 @@ TagManager:
     locked: 0
   - name: Goose
     uniqueID: 99636167
+    locked: 0
+  - name: Foreground - Ahead
+    uniqueID: 3076308517
     locked: 0
