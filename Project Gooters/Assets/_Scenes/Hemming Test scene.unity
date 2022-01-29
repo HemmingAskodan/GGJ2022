@@ -515,6 +515,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1985390003, guid: de0a47abed3ff49a18e090144372977c, type: 3}
+      propertyPath: m_Target.x
+      value: -3.9864466
+      objectReference: {fileID: 0}
+    - target: {fileID: 1985390003, guid: de0a47abed3ff49a18e090144372977c, type: 3}
+      propertyPath: m_Target.y
+      value: 4.53
+      objectReference: {fileID: 0}
     - target: {fileID: 7379676066517723917, guid: de0a47abed3ff49a18e090144372977c,
         type: 3}
       propertyPath: m_Name
@@ -593,7 +601,7 @@ GameObject:
   - component: {fileID: 1880622932}
   - component: {fileID: 1880622931}
   - component: {fileID: 1880622930}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: A Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -612,6 +620,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a4f00c1bccff37449e359ed7340239d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  center: {x: 0, y: 0}
+  cameraZoom: 5
 --- !u!61 &1880622931
 BoxCollider2D:
   m_ObjectHideFlags: 0
