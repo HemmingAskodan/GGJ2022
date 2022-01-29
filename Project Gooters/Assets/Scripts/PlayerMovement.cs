@@ -1,56 +1,75 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(SpriteRenderer))]
 public class PlayerMovement : MonoBehaviour
 {
-
     public float movementSpeed = 5f;
 
-    Rigidbody2D rb2D => GetComponent<Rigidbody2D>();
-    SpriteRenderer spriteRenderer => GetComponent<SpriteRenderer>();
-    private float xVelocity = 0;
-    private float yVelocity = 0;
-    private bool spriteFlipped = false;
+    [Header("Jumping")] public float jumpForce;
+    public Vector2 groundOffset;
+    public float groundCheckRadius;
+    public LayerMask groundCheckMask;
 
-    // Start is called before the first frame update
-    void Start()
+    private Vector2 _direction;
+    private Rigidbody2D _rigidbody;
+    private float _scaleX;
+
+    private void Start()
     {
-        
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _scaleX = transform.localScale.x;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        var velocity = _rigidbody.velocity;
+        velocity.x = _direction.x * movementSpeed;
+        _rigidbody.velocity = velocity;
     }
 
-    void FixedUpdate()
+    private void OnDrawGizmos()
     {
-        rb2D.velocity = new Vector2(xVelocity * movementSpeed, rb2D.velocity.y);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position + (Vector3) groundOffset, groundCheckRadius);
     }
 
-    void flipImage()
+    private void OnMove(InputValue value)
     {
-        spriteRenderer.flipX = !spriteRenderer.flipX;
-        spriteFlipped = !spriteFlipped;
-    }
+        _direction = value.Get<Vector2>();
 
-    private void OnMove(InputValue value){
-        Vector2 v = value.Get<Vector2>();
-        xVelocity = v.x;
-        yVelocity = v.y;
-
-        if(v.x > 0f && !spriteFlipped)
+        switch (_direction.x)
         {
-            flipImage();
+            case > 0.0f:
+            {
+                FlipImage(-_scaleX);
+                break;
+            }
+            case < 0.0f:
+            {
+                FlipImage(_scaleX);
+                break;
+            }
         }
-        if(v.x < 0f && spriteFlipped)
+    }
+
+    private void OnJump()
+    {
+        var relativePos = (Vector2) transform.position + groundOffset;
+
+        if (!Physics2D.OverlapCircle(relativePos, groundCheckRadius, groundCheckMask))
         {
-            flipImage();
+            return;
         }
+
+        _rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    }
+
+    private void FlipImage(float dirX)
+    {
+        var trans = transform;
+        var scale = trans.localScale;
+        scale.x = dirX;
+        trans.localScale = scale;
     }
 }
