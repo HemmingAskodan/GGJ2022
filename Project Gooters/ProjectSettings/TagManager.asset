@@ -40,6 +40,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1809389515
+    locked: 0
+  - name: Background - Props
+    uniqueID: 723221339
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground - Walls
+    uniqueID: 3425879571
+    locked: 0
+  - name: Foreground - Props
+    uniqueID: 2015920625
+    locked: 0
+  - name: Mouse
+    uniqueID: 1336268211
+    locked: 0
+  - name: Foreground - Props (Mouse)
+    uniqueID: 1552374185
+    locked: 0
+  - name: Goose
+    uniqueID: 99636167
     locked: 0
