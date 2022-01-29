@@ -82,7 +82,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &7379676066517724018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,9 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb75f06c28504df4e87d05adeb2fed2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  render: {fileID: 7379676067741688279}
   movementSpeed: 5
-  jumpForce: 5
+  jumpForce: 9
   groundOffset: {x: 0, y: -0.07}
   groundCheckRadius: 0.12
   groundCheckMask:
