@@ -127,7 +127,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -149,7 +149,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 1.07}
-  m_ConnectedAnchor: {x: 51.892967, y: 1.3582673}
+  m_ConnectedAnchor: {x: 51.38297, y: 1.3582673}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
