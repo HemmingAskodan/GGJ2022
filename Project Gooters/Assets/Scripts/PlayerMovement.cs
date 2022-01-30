@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public float groundCheckRadius;
     public LayerMask groundCheckMask;
 
+    public FootSteps steps;
+
     private Vector2 _direction;
     private Rigidbody2D _rigidbody;
     private float _scaleX;
@@ -29,6 +31,15 @@ public class PlayerMovement : MonoBehaviour
         var velocity = _rigidbody.velocity;
         velocity.x = _direction.x * movementSpeed;
         _rigidbody.velocity = velocity;
+
+        if (Mathf.Abs(velocity.x) > 0.0f)
+        {
+            steps.PlaySound();
+        }
+        else
+        {
+            steps.StopSound();
+        }
     }
 
     private void OnEnable()
