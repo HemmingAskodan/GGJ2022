@@ -15,7 +15,7 @@ public class UIPlayerChooseCharacter : MonoBehaviour
     {
         currentPos = pos;
     }
-    private InputDevice inputDevice;
+    private InputDevice[] inputDevices;
 
     private bool playerControlsEnabled = true;
     // Start is called before the first frame update
@@ -24,9 +24,9 @@ public class UIPlayerChooseCharacter : MonoBehaviour
         transform.SetParent(FindObjectOfType<Canvas>().transform);
     }
 
-    public void SetDevice(InputDevice inputDevice)
+    public void SetDevices(InputDevice[] inputDevices)
     {
-        this.inputDevice = inputDevice;
+        this.inputDevices = inputDevices;
     }
 
     private void OnNavigate(InputValue value)
@@ -82,20 +82,22 @@ public class UIPlayerChooseCharacter : MonoBehaviour
 
     public void ChooseGoose()
     {
-        PlayersChooseCharacters.Instance().ChooseGoose(inputDevice);
+        PlayersChooseCharacters.Instance().ChooseGoose(inputDevices);
 
         playerControlsEnabled = false;
         GetComponent<Image>().enabled = false;
+        GetComponent<PlayerInput>().enabled = false;
 
         PlayersChooseCharacters.Instance().ShouldProceed();
     }
     
     public void ChooseMouse()
     {
-        PlayersChooseCharacters.Instance().ChooseMouse(inputDevice);
+        PlayersChooseCharacters.Instance().ChooseMouse(inputDevices);
         
         playerControlsEnabled = false;
         GetComponent<Image>().enabled = false;
+        GetComponent<PlayerInput>().enabled = false;
 
         PlayersChooseCharacters.Instance().ShouldProceed();
     }

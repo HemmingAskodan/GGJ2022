@@ -20,15 +20,15 @@ public class PlayersChooseCharacters : PlayerInputManager
     public GameObject mouseSelectSection;
     public bool mouseSelected => !mouseSelectSection.GetComponent<Button>().IsInteractable();
 
-    private InputDevice gooseDevice;
-    public InputDevice GetGooseDevice()
+    private InputDevice[] gooseDevices;
+    public InputDevice[] GetGooseDevice()
     {
-        return gooseDevice;
+        return gooseDevices;
     }
-    private InputDevice mouseDevice;
-    public InputDevice GetMouseDevice()
+    private InputDevice[] mouseDevices;
+    public InputDevice[] GetMouseDevice()
     {
-        return mouseDevice;
+        return mouseDevices;
     }
 
     // Start is called before the first frame update
@@ -47,17 +47,17 @@ public class PlayersChooseCharacters : PlayerInputManager
     void OnPlayerJoined(PlayerInput playerInput) {
         // print(playerInput.devices[0]);
         playerInput.transform.position = middleSection.transform.position;
-        playerInput.GetComponent<UIPlayerChooseCharacter>().SetDevice(playerInput.devices[0]);
+        playerInput.GetComponent<UIPlayerChooseCharacter>().SetDevices(playerInput.devices.ToArray());
     }
 
     public void ShouldProceed()
     {
-        if(gooseDevice != null && mouseDevice != null)
+        if(gooseDevices != null && mouseDevices != null)
         {
             print("CODE HERE TO DO, WHEN YOU WANT TO PROCEED :)");
 
-            PlayerInput.Instantiate(goosePrefab, -1, null, -1, gooseDevice);
-            PlayerInput.Instantiate(mousePrefab, -1, null, -1, mouseDevice);
+            PlayerInput.Instantiate(goosePrefab, -1, null, -1, gooseDevices);
+            PlayerInput.Instantiate(mousePrefab, -1, null, -1, mouseDevices);
         }
         else
         {
@@ -65,15 +65,15 @@ public class PlayersChooseCharacters : PlayerInputManager
         }
     }
 
-    public void ChooseGoose(InputDevice device)
+    public void ChooseGoose(InputDevice[] devices)
     {
-        gooseDevice = device;
+        gooseDevices = devices;
         SetPlayersBackToMiddle(ChooseCharacterPositions.GOOSE);
         gooseSelectSection.GetComponent<Button>().interactable = false;
     }
-    public void ChooseMouse(InputDevice device)
+    public void ChooseMouse(InputDevice[] devices)
     {
-        mouseDevice = device;
+        mouseDevices = devices;
         SetPlayersBackToMiddle(ChooseCharacterPositions.MOUSE);
         mouseSelectSection.GetComponent<Button>().interactable = false;
     }

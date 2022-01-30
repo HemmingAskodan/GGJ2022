@@ -417,5 +417,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Join Game Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1699317655275617656, guid: bfe0766b25340d94a9006ae550e0a9ae,
+        type: 3}
+      propertyPath: goosePrefab
+      value: 
+      objectReference: {fileID: 1396814258439485504, guid: 9a1cc7376b87e764686fd6eb675c87f8,
+        type: 3}
+    - target: {fileID: 1699317655275617656, guid: bfe0766b25340d94a9006ae550e0a9ae,
+        type: 3}
+      propertyPath: mousePrefab
+      value: 
+      objectReference: {fileID: 7379676066517723917, guid: de0a47abed3ff49a18e090144372977c,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfe0766b25340d94a9006ae550e0a9ae, type: 3}
