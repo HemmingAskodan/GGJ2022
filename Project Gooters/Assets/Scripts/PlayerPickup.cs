@@ -14,6 +14,11 @@ public class PlayerPickup : MonoBehaviour
 
     private void Update()
     {
+        if (_currentItem == null)
+        {
+            return;
+        }
+
         _currentItem.UpdateTarget(pickupPoint.position);
     }
 

@@ -14,7 +14,10 @@ public class ObjectTeleporter : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        _objectToTeleport = other.gameObject;
+        if (_objectToTeleport && _objectToTeleport.activeSelf)
+        {
+            _objectToTeleport = null;
+        }
     }
 
     public void StartTeleporting()
@@ -45,5 +48,7 @@ public class ObjectTeleporter : MonoBehaviour
         {
             body.AddForce(arrivalForce, ForceMode2D.Impulse);
         }
+
+        _objectToTeleport = null;
     }
 }

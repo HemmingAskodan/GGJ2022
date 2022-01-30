@@ -816,9 +816,28 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+  gooseSpawnPoint: {fileID: 0}
+  mouseSpawnPoint: {fileID: 0}
+  goosePrefab: {fileID: 0}
+  mousePrefab: {fileID: 0}
   gooseSelectSection: {fileID: 1699317655380750028}
   middleSection: {fileID: 1699317654756915339}
   mouseSelectSection: {fileID: 1699317655213736671}
+  onGameReady:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1699317655380750028
 GameObject:
   m_ObjectHideFlags: 0

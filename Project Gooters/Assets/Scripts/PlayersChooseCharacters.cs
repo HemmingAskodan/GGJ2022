@@ -1,63 +1,96 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public enum ChooseCharacterPositions{GOOSE,MIDDLE,MOUSE}
+public enum ChooseCharacterPositions
+{
+    GOOSE,
+    MIDDLE,
+    MOUSE
+}
+
 public class PlayersChooseCharacters : PlayerInputManager
 {
+    private static PlayersChooseCharacters instance;
+    public Transform gooseSpawnPoint;
+    public Transform mouseSpawnPoint;
+
     public GameObject goosePrefab;
     public GameObject mousePrefab;
-    private static PlayersChooseCharacters instance;
-    public static PlayersChooseCharacters Instance(){
-        return instance;
-    }
 
     public GameObject gooseSelectSection;
-    public bool gooseSelected => !gooseSelectSection.GetComponent<Button>().IsInteractable();
     public GameObject middleSection;
     public GameObject mouseSelectSection;
-    public bool mouseSelected => !mouseSelectSection.GetComponent<Button>().IsInteractable();
+
+    public UnityEvent onGameReady;
 
     private InputDevice[] gooseDevices;
-    public InputDevice[] GetGooseDevice()
-    {
-        return gooseDevices;
-    }
     private InputDevice[] mouseDevices;
-    public InputDevice[] GetMouseDevice()
-    {
-        return mouseDevices;
-    }
+    public bool gooseSelected => !gooseSelectSection.GetComponent<Button>().IsInteractable();
+    public bool mouseSelected => !mouseSelectSection.GetComponent<Button>().IsInteractable();
 
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
-    void OnPlayerJoined(PlayerInput playerInput) {
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
+    }
+
+    public static PlayersChooseCharacters Instance()
+    {
+        return instance;
+    }
+
+    public InputDevice[] GetGooseDevice()
+    {
+        return gooseDevices;
+    }
+
+    public InputDevice[] GetMouseDevice()
+    {
+        return mouseDevices;
+    }
+
+    private void OnPlayerJoined(PlayerInput playerInput)
+    {
         // print(playerInput.devices[0]);
-        playerInput.transform.position = middleSection.transform.position;
-        playerInput.GetComponent<UIPlayerChooseCharacter>().SetDevices(playerInput.devices.ToArray());
+        // playerInput.transform.position = middleSection.transform.position;
+
+        var characterChoice = playerInput.GetComponent<UIPlayerChooseCharacter>();
+        if (characterChoice != null)
+        {
+            characterChoice.SetDevices(playerInput.devices.ToArray());
+        }
     }
 
     public void ShouldProceed()
     {
-        if(gooseDevices != null && mouseDevices != null)
+        if (gooseDevices != null && mouseDevices != null)
         {
             print("CODE HERE TO DO, WHEN YOU WANT TO PROCEED :)");
 
-            PlayerInput.Instantiate(goosePrefab, -1, null, -1, gooseDevices);
-            PlayerInput.Instantiate(mousePrefab, -1, null, -1, mouseDevices);
+            var goose = PlayerInput.Instantiate(goosePrefab, -1, null, -1, gooseDevices);
+            goose.transform.position = gooseSpawnPoint.transform.position;
+
+            var mouse = PlayerInput.Instantiate(mousePrefab, -1, null, -1, mouseDevices);
+            mouse.transform.position = mouseSpawnPoint.transform.position;
+
+            onGameReady.Invoke();
         }
         else
         {
@@ -71,6 +104,7 @@ public class PlayersChooseCharacters : PlayerInputManager
         SetPlayersBackToMiddle(ChooseCharacterPositions.GOOSE);
         gooseSelectSection.GetComponent<Button>().interactable = false;
     }
+
     public void ChooseMouse(InputDevice[] devices)
     {
         mouseDevices = devices;
@@ -78,23 +112,15 @@ public class PlayersChooseCharacters : PlayerInputManager
         mouseSelectSection.GetComponent<Button>().interactable = false;
     }
 
-    void SetPlayersBackToMiddle(ChooseCharacterPositions pos)
+    private void SetPlayersBackToMiddle(ChooseCharacterPositions pos)
     {
-        foreach(UIPlayerChooseCharacter uiPCC in FindObjectsOfType<UIPlayerChooseCharacter>())
+        foreach (var uiPCC in FindObjectsOfType<UIPlayerChooseCharacter>())
         {
-            if(uiPCC.GetCurrentPos() == pos)
+            if (uiPCC.GetCurrentPos() == pos)
             {
                 uiPCC.transform.position = middleSection.transform.position;
                 uiPCC.SetCurrentPos(ChooseCharacterPositions.MIDDLE);
             }
-        }
-    }
-
-    void OnDestroy()
-    {
-        if(instance == this)
-        {
-            instance = null;
         }
     }
 }
