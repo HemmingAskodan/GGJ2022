@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car Key
       objectReference: {fileID: 0}
+    - target: {fileID: 2913573564372869964, guid: a71c832a0a043410a9b15e4aad674094,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6218992646757311778, guid: a71c832a0a043410a9b15e4aad674094,
         type: 3}
       propertyPath: m_Sprite

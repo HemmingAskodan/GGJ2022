@@ -19,10 +19,8 @@ public class RoomDeterminer : MonoBehaviour
         {
             gooseInside = true;
         }
-        print("Entering is: " + collider2D.tag);
         if(mouseInside && gooseInside)
         {
-            print("AAAA");
             CameraMovement.Instance().SetRoom(center,cameraZoom);
         }
     }

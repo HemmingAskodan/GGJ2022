@@ -30,12 +30,15 @@ public class PlayersChooseCharacters : PlayerInputManager
     public bool gooseSelected => !gooseSelectSection.GetComponent<Button>().IsInteractable();
     public bool mouseSelected => !mouseSelectSection.GetComponent<Button>().IsInteractable();
 
+    GameObject goose, mouse;
+
     // Start is called before the first frame update
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -80,24 +83,32 @@ public class PlayersChooseCharacters : PlayerInputManager
 
     public void ShouldProceed()
     {
+        print("PROCEED");
         if (gooseDevices != null && mouseDevices != null)
         {
-            print("CODE HERE TO DO, WHEN YOU WANT TO PROCEED :)");
+            // print("CODE HERE TO DO, WHEN YOU WANT TO PROCEED :)");
 
             var goose = PlayerInput.Instantiate(goosePrefab, -1, null, -1, gooseDevices);
             goose.transform.position = gooseSpawnPoint.transform.position;
+            this.goose = goose.gameObject;
             DontDestroyOnLoad(goose);
 
             var mouse = PlayerInput.Instantiate(mousePrefab, -1, null, -1, mouseDevices);
             mouse.transform.position = mouseSpawnPoint.transform.position;
+            this.mouse = mouse.gameObject;
             DontDestroyOnLoad(mouse);
 
             onGameReady.Invoke();
         }
         else
         {
-            print("ALL CHARACTERS AREN'T SELECTED YET!");
+            // print("ALL CHARACTERS AREN'T SELECTED YET!");
         }
+    }
+
+    public bool PlayersAreMade()
+    {
+        return goose != null && mouse != null;
     }
 
     public void ChooseGoose(InputDevice[] devices)
