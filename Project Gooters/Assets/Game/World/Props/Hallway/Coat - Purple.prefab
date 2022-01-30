@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1948773670523451299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 572407221688217182}
+  m_Layer: 10
+  m_Name: Spawn From
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &572407221688217182
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948773670523451299}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.22, y: -0.68, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5224705879255088298}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1479444190090871734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91,12 +122,39 @@ PrefabInstance:
     - target: {fileID: 8337814497756040468, guid: 6687180d275ad49c486cd5f2b9878b5b,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0
+      value: 49.744923
       objectReference: {fileID: 0}
     - target: {fileID: 8337814497756040468, guid: 6687180d275ad49c486cd5f2b9878b5b,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 1.16
+      value: 1.3202807
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6687180d275ad49c486cd5f2b9878b5b, type: 3}
+--- !u!1 &4093001020473782226 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3190035183638637668, guid: 6687180d275ad49c486cd5f2b9878b5b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1479444190090871734}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1441135611072954685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4093001020473782226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87bcf449fb62b4edb8ac20ba544b6fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFrom: {fileID: 572407221688217182}
+  rotationThreshold: 11.6
+  itemToReveal: {fileID: 0}
+--- !u!4 &5224705879255088298 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6632088077114621724, guid: 6687180d275ad49c486cd5f2b9878b5b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1479444190090871734}
+  m_PrefabAsset: {fileID: 0}

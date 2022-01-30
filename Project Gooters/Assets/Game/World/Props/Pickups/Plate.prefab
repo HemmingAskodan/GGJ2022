@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6523430564674633036
+--- !u!1001 &1118761417504315221
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,18 +10,18 @@ PrefabInstance:
     - target: {fileID: 444357253098915432, guid: 83e554135d69c40b2801078007b51e6f,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.5
+      value: 1.0625
       objectReference: {fileID: 0}
     - target: {fileID: 444357253098915432, guid: 83e554135d69c40b2801078007b51e6f,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.6875
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 444357253098915432, guid: 83e554135d69c40b2801078007b51e6f,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -199851023, guid: 00f273b41f6f34c368c8f8c6a4251b51,
+      objectReference: {fileID: 1218040636, guid: 08866092f700448ada4ea05f98315854,
         type: 3}
     - target: {fileID: 444357253098915432, guid: 83e554135d69c40b2801078007b51e6f,
         type: 3}
@@ -86,38 +86,33 @@ PrefabInstance:
     - target: {fileID: 3865187655208945468, guid: 83e554135d69c40b2801078007b51e6f,
         type: 3}
       propertyPath: m_Anchor.x
-      value: 0.21
+      value: 0.51
       objectReference: {fileID: 0}
     - target: {fileID: 3865187655208945468, guid: 83e554135d69c40b2801078007b51e6f,
         type: 3}
       propertyPath: m_Anchor.y
-      value: 0.31
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 6598895217895424395, guid: 83e554135d69c40b2801078007b51e6f,
         type: 3}
       propertyPath: m_Name
-      value: Wellies
-      objectReference: {fileID: 0}
-    - target: {fileID: 8650280144180723718, guid: 83e554135d69c40b2801078007b51e6f,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 0
+      value: Plate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83e554135d69c40b2801078007b51e6f, type: 3}
---- !u!1 &77719760169942215 stripped
+--- !u!1 &6058854049165317854 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6598895217895424395, guid: 83e554135d69c40b2801078007b51e6f,
     type: 3}
-  m_PrefabInstance: {fileID: 6523430564674633036}
+  m_PrefabInstance: {fileID: 1118761417504315221}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &-5670949095661945249
+--- !u!61 &6005598979857212520
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77719760169942215}
+  m_GameObject: {fileID: 6058854049165317854}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -128,12 +123,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.6875}
-    newSize: {x: 0.5, y: 0.6875}
+    oldSize: {x: 1.0625, y: 0.25}
+    newSize: {x: 1.0625, y: 0.25}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.6875}
+  m_Size: {x: 1.0625, y: 0.25}
   m_EdgeRadius: 0
