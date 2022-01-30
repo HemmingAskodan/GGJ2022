@@ -2110,12 +2110,12 @@ PrefabInstance:
         type: 3}
       propertyPath: gooseSpawnPoint
       value: 
-      objectReference: {fileID: 1852982566}
+      objectReference: {fileID: 979168796}
     - target: {fileID: 1699317655275617656, guid: bfe0766b25340d94a9006ae550e0a9ae,
         type: 3}
       propertyPath: mouseSpawnPoint
       value: 
-      objectReference: {fileID: 447908880}
+      objectReference: {fileID: 1411130320}
     - target: {fileID: 1699317655275617656, guid: bfe0766b25340d94a9006ae550e0a9ae,
         type: 3}
       propertyPath: onGameReady.m_PersistentCalls.m_Calls.Array.size
@@ -21554,6 +21554,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 0.5707547
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218992646757311778, guid: a71c832a0a043410a9b15e4aad674094,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218992646757311778, guid: a71c832a0a043410a9b15e4aad674094,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1552374185
       objectReference: {fileID: 0}
     - target: {fileID: 6386475142007649206, guid: a71c832a0a043410a9b15e4aad674094,
         type: 3}
