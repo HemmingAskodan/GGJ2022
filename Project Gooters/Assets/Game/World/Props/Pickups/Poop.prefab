@@ -103,6 +103,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: poop
       objectReference: {fileID: 0}
+    - target: {fileID: 8650280144180723718, guid: 83e554135d69c40b2801078007b51e6f,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83e554135d69c40b2801078007b51e6f, type: 3}
 --- !u!1 &4939847220558426781 stripped
