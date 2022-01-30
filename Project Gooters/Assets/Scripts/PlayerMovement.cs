@@ -24,27 +24,43 @@ public class PlayerMovement : MonoBehaviour
         gravityScale = GetComponent<Rigidbody2D>().gravityScale;
     }
 
-    void OnEnable(){
-        if(gameObject.tag == "Goose")
+    private void FixedUpdate()
+    {
+        var velocity = _rigidbody.velocity;
+        velocity.x = _direction.x * movementSpeed;
+        _rigidbody.velocity = velocity;
+    }
+
+    private void OnEnable()
+    {
+        if (gameObject.tag == "Goose")
         {
             CameraMovement.Instance().SetGooseTransform(transform);
         }
-        if(gameObject.tag == "Mouse")
+
+        if (gameObject.tag == "Mouse")
         {
             CameraMovement.Instance().SetMouseTransform(transform);
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position + (Vector3) groundOffset, groundCheckRadius);
+    }
+
     public void CustomEnable(bool enable)
     {
         controlsEnabled = enable;
-        
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        if(sr == null)
+
+        var sr = GetComponent<SpriteRenderer>();
+        if (sr == null)
         {
             sr = GetComponentInChildren<SpriteRenderer>();
         }
-        if(sr != null)
+
+        if (sr != null)
         {
             sr.enabled = enable;
         }
@@ -59,15 +75,18 @@ public class PlayerMovement : MonoBehaviour
         //     c2D.enabled = enable;
         // }
 
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if(rb == null)
+        var rb = GetComponent<Rigidbody2D>();
+        if (rb == null)
         {
             rb = GetComponentInChildren<Rigidbody2D>();
         }
-        if(rb != null)
+
+        if (rb != null)
         {
-            if(enable)
+            if (enable)
+            {
                 rb.bodyType = RigidbodyType2D.Dynamic;
+            }
             else
             {
                 rb.bodyType = RigidbodyType2D.Kinematic;
@@ -76,34 +95,23 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        var velocity = _rigidbody.velocity;
-        velocity.x = _direction.x * movementSpeed;
-        _rigidbody.velocity = velocity;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position + (Vector3) groundOffset, groundCheckRadius);
-    }
-
     private void OnMove(InputValue value)
     {
-        if(!controlsEnabled)
+        if (!controlsEnabled)
+        {
             return;
+        }
 
         _direction = value.Get<Vector2>();
 
         switch (_direction.x)
         {
-            case > 0.0f:
+            case > 0.1f:
             {
                 FlipImage(-_scaleX);
                 break;
             }
-            case < 0.0f:
+            case < -0.1f:
             {
                 FlipImage(_scaleX);
                 break;
@@ -113,8 +121,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnJump()
     {
-        if(!controlsEnabled)
+        if (!controlsEnabled)
+        {
             return;
+        }
 
         var relativePos = (Vector2) transform.position + groundOffset;
 
