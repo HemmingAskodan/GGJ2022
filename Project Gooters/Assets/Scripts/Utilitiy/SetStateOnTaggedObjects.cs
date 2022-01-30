@@ -11,7 +11,15 @@ public class SetStateOnTaggedObjects : MonoBehaviour
             var obj = GameObject.FindGameObjectWithTag(t);
             if (obj != null)
             {
-                obj.SetActive(state);
+                PlayerMovement pm = obj.GetComponent<PlayerMovement>();
+                if(pm != null)
+                {
+                    pm.CustomEnable(state);
+                }
+                else
+                {
+                    obj.SetActive(state);
+                }
             }
         }
     }

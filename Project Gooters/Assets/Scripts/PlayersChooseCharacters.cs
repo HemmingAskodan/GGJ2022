@@ -86,9 +86,11 @@ public class PlayersChooseCharacters : PlayerInputManager
 
             var goose = PlayerInput.Instantiate(goosePrefab, -1, null, -1, gooseDevices);
             goose.transform.position = gooseSpawnPoint.transform.position;
+            DontDestroyOnLoad(goose);
 
             var mouse = PlayerInput.Instantiate(mousePrefab, -1, null, -1, mouseDevices);
             mouse.transform.position = mouseSpawnPoint.transform.position;
+            DontDestroyOnLoad(mouse);
 
             onGameReady.Invoke();
         }
