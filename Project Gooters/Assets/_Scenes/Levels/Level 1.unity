@@ -2206,12 +2206,12 @@ PrefabInstance:
         type: 3}
       propertyPath: gooseSpawnPoint
       value: 
-      objectReference: {fileID: 1852982566}
+      objectReference: {fileID: 979168796}
     - target: {fileID: 1699317655275617656, guid: bfe0766b25340d94a9006ae550e0a9ae,
         type: 3}
       propertyPath: mouseSpawnPoint
       value: 
-      objectReference: {fileID: 447908880}
+      objectReference: {fileID: 1411130320}
     - target: {fileID: 1699317655275617656, guid: bfe0766b25340d94a9006ae550e0a9ae,
         type: 3}
       propertyPath: onGameReady.m_PersistentCalls.m_Calls.Array.size
@@ -29631,7 +29631,7 @@ PrefabInstance:
     - target: {fileID: 3137367288973892814, guid: a7bc91f1c532f48c4ab0fe79d41f71a5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8708949930351529401, guid: a7bc91f1c532f48c4ab0fe79d41f71a5,
         type: 3}
@@ -29641,12 +29641,12 @@ PrefabInstance:
     - target: {fileID: 8708949930351529401, guid: a7bc91f1c532f48c4ab0fe79d41f71a5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 69.4
+      value: 51.43
       objectReference: {fileID: 0}
     - target: {fileID: 8708949930351529401, guid: a7bc91f1c532f48c4ab0fe79d41f71a5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.3
+      value: 2.33
       objectReference: {fileID: 0}
     - target: {fileID: 8708949930351529401, guid: a7bc91f1c532f48c4ab0fe79d41f71a5,
         type: 3}
