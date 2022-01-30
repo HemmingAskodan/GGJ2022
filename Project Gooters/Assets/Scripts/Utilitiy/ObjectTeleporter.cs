@@ -24,7 +24,8 @@ public class ObjectTeleporter : MonoBehaviour
     {
         if (_objectToTeleport)
         {
-            _objectToTeleport.SetActive(false);
+            // _objectToTeleport.SetActive(false);
+            // _objectToTeleport.GetComponent<PlayerMovement>().CustomEnable(false);
         }
     }
 
@@ -42,7 +43,8 @@ public class ObjectTeleporter : MonoBehaviour
         objPos.y = teleportToPos.y;
         _objectToTeleport.transform.position = objPos;
 
-        _objectToTeleport.SetActive(true);
+        // _objectToTeleport.SetActive(true);
+        // _objectToTeleport.GetComponent<PlayerMovement>().CustomEnable(true);
         var body = _objectToTeleport.GetComponent<Rigidbody2D>();
         if (body)
         {
