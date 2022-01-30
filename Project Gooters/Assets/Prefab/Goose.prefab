@@ -238,7 +238,7 @@ GameObject:
   m_Layer: 7
   m_Name: Goose
   m_TagString: Goose
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -486,13 +486,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d38cf649165d4a2b94ccb61c1ef7525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupMask:
-    serializedVersion: 2
-    m_Bits: 1280
-  pickupDetectionPoint: {fileID: 1276296953}
-  pickupCheckRadius: 0
-  detection: {fileID: 1015049113972208252}
   pickupPoint: {fileID: 953343571}
+  detection: {fileID: 1015049113972208252}
 --- !u!114 &4213939753265247269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,6 +500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8590d2451d5e2429da4c179ed497445f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detection: {fileID: 0}
 --- !u!114 &1015049113972208252
 MonoBehaviour:
   m_ObjectHideFlags: 0
