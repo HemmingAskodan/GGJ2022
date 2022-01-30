@@ -5,6 +5,9 @@ public class PlayerPickup : MonoBehaviour
     [Header("Pickup")] public Transform pickupPoint;
     public ComponentDetection detection;
 
+    public AudioSource pickupSound;
+    public AudioSource dropSound;
+
     private Pickup _currentItem;
 
     private void Start()
@@ -34,12 +37,14 @@ public class PlayerPickup : MonoBehaviour
 
             _currentItem = pickup;
             _currentItem.PickupItem();
+            pickupSound.Play();
             enabled = true;
             return;
         }
 
         _currentItem.DropItem();
         _currentItem = null;
+        dropSound.Play();
         enabled = false;
     }
 }
