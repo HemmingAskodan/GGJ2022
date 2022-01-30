@@ -15,12 +15,13 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private float _scaleX;
     private bool controlsEnabled = true;
-    private float gravityScale => GetComponent<Rigidbody2D>().gravityScale;
+    private float gravityScale;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _scaleX = transform.localScale.x;
+        gravityScale = GetComponent<Rigidbody2D>().gravityScale;
     }
 
     void OnEnable(){
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     public void CustomEnable(bool enable)
     {
         controlsEnabled = enable;
+        
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         if(sr == null)
         {
@@ -47,15 +49,15 @@ public class PlayerMovement : MonoBehaviour
             sr.enabled = enable;
         }
 
-        Collider2D c2D = GetComponent<Collider2D>();
-        if(c2D == null)
-        {
-            c2D = GetComponentInChildren<Collider2D>();
-        }
-        if(c2D != null)
-        {
-            c2D.enabled = enable;
-        }
+        // Collider2D c2D = GetComponent<Collider2D>();
+        // if(c2D == null)
+        // {
+        //     c2D = GetComponentInChildren<Collider2D>();
+        // }
+        // if(c2D != null)
+        // {
+        //     c2D.enabled = enable;
+        // }
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if(rb == null)
@@ -65,9 +67,12 @@ public class PlayerMovement : MonoBehaviour
         if(rb != null)
         {
             if(enable)
-                rb.gravityScale = gravityScale;
+                rb.bodyType = RigidbodyType2D.Dynamic;
             else
-                rb.gravityScale = 0;
+            {
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                rb.velocity = Vector2.zero;
+            }
         }
     }
 

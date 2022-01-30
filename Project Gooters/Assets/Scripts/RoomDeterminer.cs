@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoomDeterminer : MonoBehaviour
 {
     public Vector2 center;
-    public float cameraZoom = 5f;
+    public float cameraZoom = 6.75f;
 
     bool mouseInside = false, gooseInside = false;
 
@@ -19,9 +19,10 @@ public class RoomDeterminer : MonoBehaviour
         {
             gooseInside = true;
         }
-
+        print("Entering is: " + collider2D.tag);
         if(mouseInside && gooseInside)
         {
+            print("AAAA");
             CameraMovement.Instance().SetRoom(center,cameraZoom);
         }
     }
