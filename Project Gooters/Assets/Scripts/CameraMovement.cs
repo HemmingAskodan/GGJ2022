@@ -8,7 +8,8 @@ public enum CameraState {FindMiddle, Room}
 public class CameraMovement : MonoBehaviour
 {
     public CameraState cameraState = CameraState.FindMiddle;
-    public Vector3 betweenOffset;
+    public Vector3 betweenOffset = new Vector3(0,0.5f,0);
+    public float betweenZoom = 6.75f;
     static private CameraMovement instance;
     static public CameraMovement Instance(){
         return instance;
@@ -19,7 +20,7 @@ public class CameraMovement : MonoBehaviour
     private Camera camera => GetComponent<Camera>();
 
     private Vector3 centerRoom = new Vector3();
-    private float zoomCamera = 5f;
+    private float roomZoomCamera = 5f;
 
     // Start is called before the first frame update
     void Awake()
@@ -47,13 +48,14 @@ public class CameraMovement : MonoBehaviour
             Vector3 vDistance = mouseTransform.position - gooseTransform.position;
             Vector3 between = (gooseTransform.position + vDistance / 2) + betweenOffset;
             target = between + dept;
-            cameraSize = (vDistance.magnitude / 2) + 2;
+            // cameraSize = (vDistance.magnitude / 2) + 2;
+            cameraSize = betweenZoom;
         }
 
         if(cameraState == CameraState.Room)
         {
             target = centerRoom + dept;
-            cameraSize = zoomCamera;
+            cameraSize = roomZoomCamera;
         }
 
         transform.position = Vector3.Lerp(transform.position, target,0.01f);
@@ -64,6 +66,14 @@ public class CameraMovement : MonoBehaviour
     {
         cameraState = CameraState.Room;
         this.centerRoom = centerRoom;
-        this.zoomCamera = zoomCamera;
+        this.roomZoomCamera = zoomCamera;
+    }
+
+    void OnDestroy()
+    {
+        if(instance == this)
+        {
+            instance = null;
+        }
     }
 }
