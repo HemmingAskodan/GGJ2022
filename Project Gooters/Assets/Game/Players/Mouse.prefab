@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7379676066517724017
 Transform:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0.15}
-  m_Target: {x: -6.45, y: -1.2916689}
+  m_Target: {x: 58.885777, y: 0.26029295}
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
