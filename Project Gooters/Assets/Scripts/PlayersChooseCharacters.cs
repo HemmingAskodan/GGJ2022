@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public enum ChooseCharacterPositions{GOOSE,MIDDLE,MOUSE}
 public class PlayersChooseCharacters : PlayerInputManager
 {
+    public GameObject goosePrefab;
+    public GameObject mousePrefab;
     private static PlayersChooseCharacters instance;
     public static PlayersChooseCharacters Instance(){
         return instance;
@@ -53,6 +55,9 @@ public class PlayersChooseCharacters : PlayerInputManager
         if(gooseDevice != null && mouseDevice != null)
         {
             print("CODE HERE TO DO, WHEN YOU WANT TO PROCEED :)");
+
+            PlayerInput.Instantiate(goosePrefab, -1, null, -1, gooseDevice);
+            PlayerInput.Instantiate(mousePrefab, -1, null, -1, mouseDevice);
         }
         else
         {
