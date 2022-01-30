@@ -17,6 +17,14 @@ public class CameraMovement : MonoBehaviour
 
     private Transform gooseTransform;
     private Transform mouseTransform;
+    public void SetGooseTransform(Transform t)
+    {
+        gooseTransform = t;
+    }
+    public void SetMouseTransform(Transform t)
+    {
+        mouseTransform = t;
+    }
     private Camera camera => GetComponent<Camera>();
 
     private Vector3 centerRoom = new Vector3();
@@ -28,8 +36,8 @@ public class CameraMovement : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            gooseTransform = GameObject.FindGameObjectWithTag("Goose").transform;
-            mouseTransform = GameObject.FindGameObjectWithTag("Mouse").transform;
+            // gooseTransform = GameObject.FindGameObjectWithTag("Goose").transform;
+            // mouseTransform = GameObject.FindGameObjectWithTag("Mouse").transform;
         }
         else
         {
@@ -40,26 +48,29 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 target = new Vector3();
-        float cameraSize = 5f;
-        Vector3 dept = Vector3.back * 10;
-        if(cameraState == CameraState.FindMiddle)
+        if(gooseTransform && mouseTransform)
         {
-            Vector3 vDistance = mouseTransform.position - gooseTransform.position;
-            Vector3 between = (gooseTransform.position + vDistance / 2) + betweenOffset;
-            target = between + dept;
-            // cameraSize = (vDistance.magnitude / 2) + 2;
-            cameraSize = betweenZoom;
-        }
+            Vector3 target = new Vector3();
+            float cameraSize = 5f;
+            Vector3 dept = Vector3.back * 10;
+            if(cameraState == CameraState.FindMiddle)
+            {
+                Vector3 vDistance = mouseTransform.position - gooseTransform.position;
+                Vector3 between = (gooseTransform.position + vDistance / 2) + betweenOffset;
+                target = new Vector3(between.x, transform.position.y ,dept.z);
+                // cameraSize = (vDistance.magnitude / 2) + 2;
+                cameraSize = betweenZoom;
+            }
 
-        if(cameraState == CameraState.Room)
-        {
-            target = centerRoom + dept;
-            cameraSize = roomZoomCamera;
-        }
+            if(cameraState == CameraState.Room)
+            {
+                target = centerRoom + dept;
+                cameraSize = roomZoomCamera;
+            }
 
-        transform.position = Vector3.Lerp(transform.position, target,0.01f);
-        camera.orthographicSize = Mathf.Lerp(camera.orthographicSize,cameraSize,0.01f);
+            transform.position = Vector3.Lerp(transform.position, target,0.01f);
+            camera.orthographicSize = Mathf.Lerp(camera.orthographicSize,cameraSize,0.01f);
+        }
     }
 
     public void SetRoom(Vector3 centerRoom, float zoomCamera = 5f)

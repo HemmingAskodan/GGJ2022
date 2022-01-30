@@ -14,11 +14,61 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _direction;
     private Rigidbody2D _rigidbody;
     private float _scaleX;
+    private bool controlsEnabled = true;
+    private float gravityScale => GetComponent<Rigidbody2D>().gravityScale;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _scaleX = transform.localScale.x;
+    }
+
+    void OnEnable(){
+        if(gameObject.tag == "Goose")
+        {
+            CameraMovement.Instance().SetGooseTransform(transform);
+        }
+        if(gameObject.tag == "Mouse")
+        {
+            CameraMovement.Instance().SetMouseTransform(transform);
+        }
+    }
+
+    public void CustomEnable(bool enable)
+    {
+        controlsEnabled = enable;
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if(sr == null)
+        {
+            sr = GetComponentInChildren<SpriteRenderer>();
+        }
+        if(sr != null)
+        {
+            sr.enabled = enable;
+        }
+
+        Collider2D c2D = GetComponent<Collider2D>();
+        if(c2D == null)
+        {
+            c2D = GetComponentInChildren<Collider2D>();
+        }
+        if(c2D != null)
+        {
+            c2D.enabled = enable;
+        }
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if(rb == null)
+        {
+            rb = GetComponentInChildren<Rigidbody2D>();
+        }
+        if(rb != null)
+        {
+            if(enable)
+                rb.gravityScale = gravityScale;
+            else
+                rb.gravityScale = 0;
+        }
     }
 
     private void FixedUpdate()
@@ -36,6 +86,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnMove(InputValue value)
     {
+        if(!controlsEnabled)
+            return;
+
         _direction = value.Get<Vector2>();
 
         switch (_direction.x)
@@ -55,6 +108,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnJump()
     {
+        if(!controlsEnabled)
+            return;
+
         var relativePos = (Vector2) transform.position + groundOffset;
 
         if (!Physics2D.OverlapCircle(relativePos, groundCheckRadius, groundCheckMask))

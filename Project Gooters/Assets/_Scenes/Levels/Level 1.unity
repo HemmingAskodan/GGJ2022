@@ -2069,7 +2069,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onGameReady.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1666993532}
+      objectReference: {fileID: 0}
     - target: {fileID: 1699317655275617656, guid: bfe0766b25340d94a9006ae550e0a9ae,
         type: 3}
       propertyPath: onGameReady.m_PersistentCalls.m_Calls.Array.data[3].m_Target
@@ -30033,6 +30033,79 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292205ce0417e41acb51f23fd451c2dc, type: 3}
+--- !u!1 &1380668346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1380668349}
+  - component: {fileID: 1380668348}
+  - component: {fileID: 1380668347}
+  m_Layer: 0
+  m_Name: Room
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1380668347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380668346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4f00c1bccff37449e359ed7340239d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 10, y: 0}
+  cameraZoom: 5
+--- !u!61 &1380668348
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380668346}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 20, y: 10}
+  m_EdgeRadius: 0
+--- !u!4 &1380668349
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380668346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1409452017 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2535574602901575114, guid: da1e6f78e2e3b447cb37f1238d897194,
@@ -30769,8 +30842,7 @@ GameObject:
   - component: {fileID: 1666993530}
   - component: {fileID: 1666993529}
   - component: {fileID: 1666993528}
-  - component: {fileID: 1666993532}
-  - component: {fileID: 1666993533}
+  - component: {fileID: 1666993534}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -30844,7 +30916,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1666993532
+--- !u!114 &1666993534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -30853,25 +30925,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1666993527}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e937c73b8c11c456f9be9f8692fca60a, type: 3}
+  m_Script: {fileID: 11500000, guid: 72becb11653be7a4da5e0578636d9e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: {fileID: 1666993533}
---- !u!114 &1666993533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666993527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d1ce70e79bc4ab7a35bba77d7fa66a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  gooseTag: Goose
-  mouseTag: Mouse
+  cameraState: 0
+  betweenOffset: {x: 0, y: 2.5, z: 0}
+  betweenZoom: 6.75
 --- !u!1 &1690244889
 GameObject:
   m_ObjectHideFlags: 0
